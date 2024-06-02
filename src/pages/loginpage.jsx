@@ -15,7 +15,7 @@ const trackInput=useRef()
 const navigate=useNavigate();
 
 const login= async()=>{
-  axios({
+ await axios({
     method:'post',
     url:"https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/login",
     data:{
@@ -25,11 +25,12 @@ const login= async()=>{
 })
 .then((status)=>{
   console.log(status);
+  setAuthState({isAuthenticated: true, token: status.data.token, email: trackInput.current })
+navigate('/')
 }).catch((err)=>{
   console.log(err);
 })
-setAuthState({isAuthenticated: true, token: null, email: trackInput.current })
-navigate('/')
+
 }
 
 

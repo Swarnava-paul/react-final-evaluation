@@ -1,4 +1,4 @@
-import { Flex,Button } from "@chakra-ui/react"
+import { Flex,Button,Grid } from "@chakra-ui/react"
 import { Link} from "react-router-dom"
 
 import { AuthContext } from "../authcontext/authcontext"
@@ -13,7 +13,10 @@ const navigate=useNavigate()
     return(
         <>
         <Flex h='12vh' bg='black' color='white' justify='space-between' p='10' align='center'>
-          <p>{Email}</p>
+          <Grid>
+          <p>email :{Email}</p>
+          <p>token :{authState.token}</p>
+          </Grid>
           <Link to='/'>Home page</Link>
           <Button onClick={()=>{
             setAuthState({isAuthenticated: false, token: null, email: null })
